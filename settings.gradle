@@ -1,0 +1,3 @@
+rootProject.name = "opengl-demo"
+include ':app'
+include ':biz:opengl'

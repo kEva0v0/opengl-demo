@@ -1,0 +1,5 @@
+apply from: rootProject.file('scripts/application.gradle')
+
+dependencies {
+    project(":biz").subprojects.forEach { implementation(it) }
+}
