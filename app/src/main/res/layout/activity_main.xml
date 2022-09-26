@@ -14,4 +14,11 @@
         android:layout_height="50dp"
         android:text="打开opengl"
         android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_filament"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="打开filament"
+        android:gravity="center"/>
 </LinearLayout>

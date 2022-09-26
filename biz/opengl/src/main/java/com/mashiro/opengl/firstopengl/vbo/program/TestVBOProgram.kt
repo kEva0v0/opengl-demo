@@ -62,7 +62,8 @@ class TestVBOProgram(context: Context): BaseProgram<NormalPoint>(context) {
     }
 
     override fun draw(model: NormalPoint) {
-        GLES20.glDrawArrays(GLES20.GL_POINTS, 0, model.pointList.size)
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, model.pointList.size)
+//        GLES20.glDrawArrays(GLES20.GL_POINTS, 0, model.pointList.size)
     }
 
     override fun disableAttributes() {

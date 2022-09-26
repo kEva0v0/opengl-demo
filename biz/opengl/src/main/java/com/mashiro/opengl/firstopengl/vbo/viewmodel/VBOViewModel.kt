@@ -7,7 +7,7 @@ import java.util.*
 
 class VBOViewModel: BaseOpenGLViewModel() {
 
-    val normalPoint = NormalPoint(mutableListOf(Point(1.0f,1.0f,0f), Point(0.5f, 0.5f, 0f), Point(0f, 0f, 0f)))
+    val normalPoint = NormalPoint(mutableListOf(Point(1.0f,1.0f,0f), Point(0f, 1f, 0f), Point(0f, 0f, 0f)))
     private val mRandom = Random()
 
     override fun addPoint() {
