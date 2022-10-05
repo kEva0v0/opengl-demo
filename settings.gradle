@@ -2,3 +2,4 @@ rootProject.name = "opengl-demo"
 include ':app'
 include ':biz:opengl'
 include ':biz:filament'
+include ':biz:rajawali'
