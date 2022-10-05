@@ -7,7 +7,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="biz/filament/src/main/res/layout/filament_layout.xml" value="0.11879432624113476" />
         <entry key="biz/opengl/src/main/res/layout/firstopengl_triangle.xml" value="0.16666666666666666" />
       </map>
     </option>

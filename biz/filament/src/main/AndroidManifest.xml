@@ -3,5 +3,6 @@
     package="com.mashiro.filament">
     <application>
         <activity android:name=".view.FilamentActivity"/>
+        <activity android:name=".view.FilamentPointCloudActivity"/>
     </application>
 </manifest>

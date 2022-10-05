@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mashiro.filament.view.FilamentActivity
+import com.mashiro.filament.view.FilamentPointCloudActivity
 import com.mashiro.opengl.firstopengl.TriangleActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         }
         btn_filament.setOnClickListener{
             val intent = Intent(this, FilamentActivity::class.java)
+            startActivity(intent)
+        }
+        btn_test_filament.setOnClickListener {
+            val intent = Intent(this, FilamentPointCloudActivity::class.java)
             startActivity(intent)
         }
     }

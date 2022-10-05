@@ -114,7 +114,7 @@ class FilamentActivity : Activity() {
     }
 
     private fun setupScene() {
-        loadMaterial()
+//        loadMaterial()
         createMesh()
 
         // To create a renderable we first create a generic entity
@@ -128,13 +128,13 @@ class FilamentActivity : Activity() {
             // Sets the mesh data of the first primitive
             .geometry(0, PrimitiveType.TRIANGLES, vertexBuffer, indexBuffer, 0, 3)
             // Sets the material of the first primitive
-            .material(0, material.defaultInstance)
+//            .material(0, material.defaultInstance)
             .build(engine, renderable)
 
         // Add the entity to the scene to render it
         scene.addEntity(renderable)
 
-        startAnimation()
+//        startAnimation()
     }
 
     private fun loadMaterial() {
@@ -252,7 +252,7 @@ class FilamentActivity : Activity() {
         engine.destroyRenderer(renderer)
         engine.destroyVertexBuffer(vertexBuffer)
         engine.destroyIndexBuffer(indexBuffer)
-        engine.destroyMaterial(material)
+//        engine.destroyMaterial(material)
         engine.destroyView(view)
         engine.destroyScene(scene)
         engine.destroyCameraComponent(camera.entity)

@@ -2,4 +2,6 @@ apply from: rootProject.file('scripts/basebiz.gradle')
 
 dependencies {
     implementation FILAMENT_ANDROID
+    implementation(FILAMENT_ANDROID_UTILS)
+    implementation GLTFIO
 }
