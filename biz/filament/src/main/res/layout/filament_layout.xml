@@ -6,10 +6,41 @@
         android:id="@+id/sv_filament"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <Button
-        android:id="@+id/btn_add"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add"
-        android:layout_gravity="bottom"/>
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add"/>
+        <Button
+            android:id="@+id/btn_add_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add all"/>
+        <Button
+            android:id="@+id/btn_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上"/>
+        <Button
+            android:id="@+id/btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下"/>
+        <Button
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="左"/>
+        <Button
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="右"/>
+    </LinearLayout>
+
 </FrameLayout>

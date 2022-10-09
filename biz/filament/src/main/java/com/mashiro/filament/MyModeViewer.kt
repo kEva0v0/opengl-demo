@@ -1,5 +1,6 @@
 package com.mashiro.filament
 
+import android.util.Log
 import android.view.MotionEvent
 import android.view.Surface
 import android.view.SurfaceView
@@ -20,13 +21,23 @@ class MyModeViewer(
     val view: View
     val camera: Camera
     val renderer: Renderer
+    var cameraFocalLength = 28f
+        set(value) {
+            field = value
+            updateCameraProjection()
+        }
 
+    private  val kNearPlane = 0.05     // 5 cm
+    private  val kFarPlane = 1000.0    // 1 km
     private lateinit var displayHelper: DisplayHelper
     private lateinit var cameraManipulator: Manipulator
-    private lateinit var gestureDetector: GestureDetector
+    private lateinit var gestureDetector: MyGestureDetector
     private var surfaceView: SurfaceView? = null
     private var textureView: TextureView? = null
     private var swapChain: SwapChain? = null
+    private val eyePos = DoubleArray(3)
+    private val target = DoubleArray(3)
+    private val upward = DoubleArray(3)
 
     init {
         renderer = engine.createRenderer()
@@ -47,10 +58,11 @@ class MyModeViewer(
         cameraManipulator = manipulator ?: Manipulator.Builder()
             .targetPosition(0f,0f,0f)
             .viewport(surfaceView.width, surfaceView.height)
-            .build(Manipulator.Mode.FREE_FLIGHT)
+            .orbitSpeed(0.01f,0.01f)
+            .build(Manipulator.Mode.ORBIT)
 
         this.surfaceView = surfaceView
-        gestureDetector = GestureDetector(surfaceView, cameraManipulator)
+        gestureDetector = MyGestureDetector(surfaceView, cameraManipulator)
         displayHelper = DisplayHelper(surfaceView.context)
         uiHelper.renderCallback = SurfaceCallback()
         uiHelper.attachTo(surfaceView)
@@ -75,16 +87,23 @@ class MyModeViewer(
         }
 
         override fun onResized(width: Int, height: Int) {
-//            view.viewport = Viewport(0, 0, width, height)
-//            cameraManipulator.setViewport(width, height)
-//            updateCameraProjection()
-            val zoom = 1.5
-            val aspect = width.toDouble() / height.toDouble()
-            camera.setProjection(Camera.Projection.ORTHO,
-                -aspect * zoom, aspect * zoom, -zoom, zoom, 0.0, 10.0)
-
             view.viewport = Viewport(0, 0, width, height)
+            cameraManipulator.setViewport(width, height)
+            updateCameraProjection()
+//            val zoom = 1.5
+//            val aspect = width.toDouble() / height.toDouble()
+//            camera.setProjection(Camera.Projection.ORTHO,
+//                -aspect * zoom, aspect * zoom, -zoom, zoom, 0.0, 10.0)
+//
+//            view.viewport = Viewport(0, 0, width, height)
         }
+    }
+
+    private fun updateCameraProjection() {
+        val width = view.viewport.width
+        val height = view.viewport.height
+        val aspect = width.toDouble() / height.toDouble()
+        camera.setLensProjection(cameraFocalLength.toDouble(), aspect, kNearPlane, kFarPlane)
     }
 
     private fun addDetachListener(view: android.view.View) {
@@ -109,6 +128,14 @@ class MyModeViewer(
             return
         }
 
+        cameraManipulator.getLookAt(eyePos, target, upward)
+        camera.lookAt(
+            eyePos[0], eyePos[1], eyePos[2],
+            target[0], target[1], target[2],
+            upward[0], upward[1], upward[2])
+        Log.i("zyc", "eyePos: ${eyePos[0]},${eyePos[1]},${eyePos[2]}")
+        Log.i("zyc", "target: ${target[0]},${target[1]},${target[2]}")
+        Log.i("zyc", "upward: ${upward[0]},${upward[1]},${upward[2]}")
         // Render the scene, unless the renderer wants to skip the frame.
         if (renderer.beginFrame(swapChain!!, frameTimeNanos)) {
             renderer.render(view)

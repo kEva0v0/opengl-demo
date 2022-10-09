@@ -22,21 +22,14 @@ abstract class BaseRenderer<Model>(
     private val frameCallback = FrameCallback()
     protected lateinit var modelViewer: MyModeViewer
 
-
     private fun initEngine(manipulatorModel: Manipulator.Mode) {
-        val cameraManipulator = Manipulator.Builder()
-            .targetPosition(0f,0f,0f)
-            .viewport(surfaceView.width, surfaceView.height)
-            .build(manipulatorModel)
-        modelViewer = MyModeViewer(surfaceView, manipulator = cameraManipulator)
-        modelViewer.engine.transformManager
+        modelViewer = MyModeViewer(surfaceView)
         modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
     }
 
+    abstract fun addFrame(model: Model)
 
-    abstract fun getRenderer(): Int
-
-    abstract fun setFrame(model: Model)
+    abstract fun destroy()
 
     fun resume(){
         choreographer.postFrameCallback(frameCallback)
@@ -46,20 +39,18 @@ abstract class BaseRenderer<Model>(
         choreographer.removeFrameCallback(frameCallback)
     }
 
-    open fun destroy(){
-        val entityManager = EntityManager.get()
-        entityManager.destroy(getRenderer())
-    }
-
     fun onTouch(event: MotionEvent) {
         modelViewer.onTouchEvent(event)
+    }
+
+    fun requestRender(){
+        modelViewer.render(System.nanoTime())
     }
 
     inner class FrameCallback : Choreographer.FrameCallback {
         override fun doFrame(frameTimeNanos: Long) {
             // Schedule the next frame
             choreographer.postFrameCallback(this)
-            modelViewer.render(frameTimeNanos)
         }
     }
 }

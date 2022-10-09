@@ -1,5 +1,6 @@
 package com.mashiro.filament.bean
 
+import android.graphics.Color
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
@@ -7,7 +8,8 @@ import java.nio.ByteOrder
 data class Vertex(val x: Float, val y: Float, val z: Float, val color: Int)
 
 data class NormalPoint(
-    val pointList: MutableList<Vertex>
+    val pointList: MutableList<Vertex>,
+    val vertexMatrix: FloatArray = floatArrayOf(1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f)
 ){
     companion object {
         const val POSITION_COLLECT_COUNT = 2
@@ -20,12 +22,17 @@ data class NormalPoint(
     }
 
     val vertexData: ByteBuffer by lazy {
-        val byteBuffer = ByteBuffer.allocate(getPointSize()*(3*floatSize + intSize)).order(ByteOrder.nativeOrder())
+        val byteBuffer = ByteBuffer.allocate(getPointSize()*getStripSize()).order(ByteOrder.nativeOrder())
         pointList.forEachIndexed { index, point ->
             byteBuffer.putFloat(point.x)
             byteBuffer.putFloat(point.y)
             byteBuffer.putFloat(point.z)
-            byteBuffer.putInt(point.color)
+            // color
+            byteBuffer.putFloat(1f)
+            byteBuffer.putFloat(1f)
+            byteBuffer.putFloat(0f)
+            byteBuffer.putFloat(0f)
+//            byteBuffer.putInt(point.color)
         }
         byteBuffer.flip()
         byteBuffer
@@ -45,8 +52,12 @@ data class NormalPoint(
         return pointList.size
     }
 
+    fun getOffsetStripSize(): Int {
+        return 3 * floatSize
+    }
+
     fun getStripSize(): Int{
-        return pointList.size * floatSize + intSize
+        return 7 * floatSize
     }
 
     override fun equals(other: Any?): Boolean {
@@ -63,5 +74,21 @@ data class NormalPoint(
     override fun hashCode(): Int {
         var result = pointList.hashCode()
         return result
+    }
+
+    fun moveLeft(){
+        vertexMatrix[12] -= 0.1f
+    }
+
+    fun moveRight(){
+        vertexMatrix[12] += 0.1f
+    }
+
+    fun moveUp() {
+        vertexMatrix[13] += 0.1f
+    }
+
+    fun moveDown() {
+        vertexMatrix[13] -= 0.1f
     }
 }

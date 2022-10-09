@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.SurfaceView
 import androidx.appcompat.app.AppCompatActivity
 import com.mashiro.filament.R
+import com.mashiro.filament.RandomColorUtils
 import com.mashiro.filament.bean.NormalPoint
-import com.mashiro.filament.bean.Point
 import com.mashiro.filament.bean.Vertex
 import com.mashiro.filament.render.PointCloudRender
 import kotlinx.android.synthetic.main.filament_layout.*
@@ -13,35 +13,86 @@ import java.util.*
 
 class FilamentPointCloudActivity: AppCompatActivity() {
 
+    companion object {
+        private const val MAX_POINT_CNT = 10000
+        private const val MAX_POINT_CLOUD = 20
+    }
+
     private lateinit var renderer : PointCloudRender
-    private val normalPoint = NormalPoint(
-        mutableListOf(
-            Vertex(0.1f,0.1f,0f, 0xffff0000.toInt()),
-            Vertex(0f, 0.1f, 0f, 0xff00ff00.toInt()),
-            Vertex(0f, 0f, 0f, 0xff0000ff.toInt())
-        )
-    )
+    private val dataMap = mutableMapOf<Int, NormalPoint>()
+    private var currentSize = 0
+    private val random = Random()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.filament_layout)
         val surfaceView = findViewById<SurfaceView>(R.id.sv_filament)
         renderer = PointCloudRender(surfaceView)
-        renderer.setFrame(normalPoint)
-        surfaceView.setOnTouchListener{ _, event ->
+        dataMap[currentSize] = createData()
+        renderer.addFrame(dataMap[currentSize]!!)
+        sv_filament.setOnTouchListener { v, event ->
             renderer.onTouch(event)
+            renderer.requestRender()
             true
         }
-
         btn_add.setOnClickListener {
             randomPoint()
+            renderer.requestRender()
         }
+        btn_add_all.setOnClickListener {
+            if (currentSize < MAX_POINT_CLOUD){
+                for (i in currentSize until MAX_POINT_CLOUD){
+                    currentSize += 1
+                    dataMap[currentSize] = createData()
+                    renderer.addFrame(dataMap[currentSize]!!)
+                }
+            }
+            renderer.requestRender()
+        }
+        btn_up.setOnClickListener {
+            dataMap.forEach {
+                it.value.moveUp()
+                renderer.move(it.value)
+            }
+            renderer.requestRender()
+        }
+        btn_down.setOnClickListener {
+            dataMap.forEach {
+                it.value.moveDown()
+                renderer.move(it.value)
+            }
+            renderer.requestRender()
+        }
+        btn_right.setOnClickListener {
+            dataMap.forEach {
+                it.value.moveRight()
+                renderer.move(it.value)
+            }
+            renderer.requestRender()
+        }
+
+        btn_left.setOnClickListener {
+            dataMap.forEach {
+                it.value.moveLeft()
+                renderer.move(it.value)
+            }
+            renderer.requestRender()
+        }
+    }
+
+    private fun createData(): NormalPoint{
+        val pointList = mutableListOf<Vertex>()
+        for (i in 0 until MAX_POINT_CNT){
+            pointList.add(Vertex(random.nextFloat()*1f-0.5f, random.nextFloat()*1f-0.5f, 0f, RandomColorUtils.getRandomColor()))
+        }
+        return NormalPoint(pointList)
     }
 
     override fun onResume() {
         super.onResume()
         renderer.resume()
 //        renderer.setFrame(normalPoint)
+        renderer.requestRender()
     }
 
     override fun onPause() {
@@ -55,14 +106,8 @@ class FilamentPointCloudActivity: AppCompatActivity() {
     }
 
     private fun randomPoint(){
-        val random = Random()
-        val normalPoint = NormalPoint(
-            mutableListOf(
-                Vertex(random.nextFloat()*0.2f,random.nextFloat()*0.2f,0f, 0xffff0000.toInt()),
-                Vertex(random.nextFloat()*0.2f,random.nextFloat()*0.2f, 0f, 0xff00ff00.toInt()),
-                Vertex(random.nextFloat()*0.2f,random.nextFloat()*0.2f, 0f, 0xff0000ff.toInt())
-            )
-        )
-        renderer.setFrame(normalPoint)
+        currentSize += 1
+        dataMap[currentSize] = createData()
+        renderer.addFrame(dataMap[currentSize]!!)
     }
 }
