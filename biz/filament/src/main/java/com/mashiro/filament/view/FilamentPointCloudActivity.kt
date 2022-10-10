@@ -14,7 +14,7 @@ import java.util.*
 class FilamentPointCloudActivity: AppCompatActivity() {
 
     companion object {
-        private const val MAX_POINT_CNT = 10000
+        private const val MAX_POINT_CNT = 50000
         private const val MAX_POINT_CLOUD = 20
     }
 
@@ -27,7 +27,9 @@ class FilamentPointCloudActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.filament_layout)
         val surfaceView = findViewById<SurfaceView>(R.id.sv_filament)
+
         renderer = PointCloudRender(surfaceView)
+        renderer.loadMaterial(this)
         dataMap[currentSize] = createData()
         renderer.addFrame(dataMap[currentSize]!!)
         sv_filament.setOnTouchListener { v, event ->

@@ -9,7 +9,7 @@ object RandomColorUtils {
         val r = random.nextFloat() * 255
         val g = random.nextFloat() * 255
         val b = random.nextFloat() * 255
-//        return Color.argb(255, r.toInt(), g.toInt(), b.toInt())
-        return Color.BLACK
+        return Color.argb(255, r.toInt(), g.toInt(), b.toInt())
+//        return Color.GREEN
     }
 }

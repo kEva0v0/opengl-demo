@@ -1,5 +1,6 @@
 package com.mashiro.filament.render
 
+import android.app.Activity
 import android.view.Choreographer
 import android.view.MotionEvent
 import android.view.SurfaceView
@@ -21,11 +22,14 @@ abstract class BaseRenderer<Model>(
     private val choreographer = Choreographer.getInstance()
     private val frameCallback = FrameCallback()
     protected lateinit var modelViewer: MyModeViewer
+    protected lateinit var material: Material
 
     private fun initEngine(manipulatorModel: Manipulator.Mode) {
         modelViewer = MyModeViewer(surfaceView)
         modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
     }
+
+    abstract fun loadMaterial(activity: Activity)
 
     abstract fun addFrame(model: Model)
 

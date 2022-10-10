@@ -22,17 +22,20 @@ data class NormalPoint(
     }
 
     val vertexData: ByteBuffer by lazy {
-        val byteBuffer = ByteBuffer.allocate(getPointSize()*getStripSize()).order(ByteOrder.nativeOrder())
+        val byteBuffer = ByteBuffer.allocate(getPointSize()*getXYZDataSize()).order(ByteOrder.nativeOrder())
         pointList.forEachIndexed { index, point ->
             byteBuffer.putFloat(point.x)
             byteBuffer.putFloat(point.y)
             byteBuffer.putFloat(point.z)
-            // color
-            byteBuffer.putFloat(1f)
-            byteBuffer.putFloat(1f)
-            byteBuffer.putFloat(0f)
-            byteBuffer.putFloat(0f)
-//            byteBuffer.putInt(point.color)
+        }
+        byteBuffer.flip()
+        byteBuffer
+    }
+
+    val vertexColor: ByteBuffer by lazy {
+        val byteBuffer = ByteBuffer.allocate(getPointSize() * getColorSize()).order(ByteOrder.nativeOrder())
+        pointList.forEachIndexed { index, point ->
+            byteBuffer.putInt(point.color)
         }
         byteBuffer.flip()
         byteBuffer
@@ -52,12 +55,12 @@ data class NormalPoint(
         return pointList.size
     }
 
-    fun getOffsetStripSize(): Int {
+    fun getXYZDataSize(): Int {
         return 3 * floatSize
     }
 
-    fun getStripSize(): Int{
-        return 7 * floatSize
+    fun getColorSize(): Int {
+        return intSize
     }
 
     override fun equals(other: Any?): Boolean {

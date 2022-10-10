@@ -1,7 +1,9 @@
 package com.mashiro.filament.render
 
+import android.app.Activity
 import android.view.SurfaceView
 import com.google.android.filament.*
+import com.mashiro.filament.AssetUtils
 import com.mashiro.filament.bean.NormalPoint
 
 class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(surfaceView), BaseAction<NormalPoint> {
@@ -12,6 +14,12 @@ class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(sur
 
     private val entityMap: MutableMap<NormalPoint, Int> = mutableMapOf()
 
+    override fun loadMaterial(activity: Activity) {
+        AssetUtils.readUncompressedAsset(activity, "materials/baked_color.filamat").let {
+            material = Material.Builder().payload(it, it.remaining()).build(modelViewer.engine)
+        }
+    }
+
     override fun addFrame(model: NormalPoint) {
         if (entityMap.containsKey(model)){
             modelViewer.scene.removeEntity(entityMap[model]!!)
@@ -19,14 +27,13 @@ class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(sur
 
         val vertexBuffer = VertexBuffer.Builder()
             .vertexCount(model.getPointSize())
-            .bufferCount(1)
-            .attribute(VertexBuffer.VertexAttribute.COLOR,    0, VertexBuffer.AttributeType.FLOAT4, model.getOffsetStripSize(), model.getStripSize())
-            .attribute(VertexBuffer.VertexAttribute.POSITION, 0, VertexBuffer.AttributeType.FLOAT3, 0, model.getStripSize())
-//            .normalized(VertexBuffer.VertexAttribute.COLOR)
-//            .attribute(VertexBuffer.VertexAttribute.TANGENTS, 0, VertexBuffer.AttributeType.FLOAT4, model.getOffsetStripSize(), model.getStripSize())
+            .bufferCount(2)
+            .attribute(VertexBuffer.VertexAttribute.POSITION, 0, VertexBuffer.AttributeType.FLOAT3, 0, model.getXYZDataSize())
+            .attribute(VertexBuffer.VertexAttribute.COLOR,    1, VertexBuffer.AttributeType.UBYTE4,0, model.getPointSize())
+            .normalized(VertexBuffer.VertexAttribute.COLOR)
             .build(modelViewer.engine)
-        model.vertexData.position(0)
         vertexBuffer.setBufferAt(modelViewer.engine,0, model.vertexData)
+        vertexBuffer.setBufferAt(modelViewer.engine, 1, model.vertexColor)
 
         val indexBuffer = IndexBuffer.Builder()
             .indexCount(model.getPointSize())
@@ -37,6 +44,7 @@ class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(sur
         RenderableManager.Builder(1)
             .boundingBox(Box(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 100.0f))
             .geometry(0, RenderableManager.PrimitiveType.POINTS, vertexBuffer, indexBuffer)
+            .material(0, material.defaultInstance)
             .build(modelViewer.engine, entityMap[model]!!)
         // 创建transform
         modelViewer.engine.transformManager.create(entityMap[model]!!)
@@ -48,6 +56,7 @@ class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(sur
             val entityManager = EntityManager.get()
             entityManager.destroy(it.value)
         }
+        modelViewer.engine.destroyMaterial(material)
     }
 
     override fun move(model: NormalPoint){
