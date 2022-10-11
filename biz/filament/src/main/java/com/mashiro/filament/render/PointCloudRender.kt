@@ -3,7 +3,7 @@ package com.mashiro.filament.render
 import android.app.Activity
 import android.view.SurfaceView
 import com.google.android.filament.*
-import com.mashiro.filament.AssetUtils
+import com.mashiro.filament.utils.AssetUtils
 import com.mashiro.filament.bean.NormalPoint
 
 class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(surfaceView), BaseAction<NormalPoint> {

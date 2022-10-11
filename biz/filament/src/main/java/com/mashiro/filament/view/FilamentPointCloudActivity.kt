@@ -1,13 +1,16 @@
 package com.mashiro.filament.view
 
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.SurfaceView
 import androidx.appcompat.app.AppCompatActivity
 import com.mashiro.filament.R
-import com.mashiro.filament.RandomColorUtils
+import com.mashiro.filament.utils.RandomColorUtils
 import com.mashiro.filament.bean.NormalPoint
 import com.mashiro.filament.bean.Vertex
+import com.mashiro.filament.mark.IMarkStateListener
 import com.mashiro.filament.render.PointCloudRender
+import com.mashiro.filament.utils.BitmapUtils
 import kotlinx.android.synthetic.main.filament_layout.*
 import java.util.*
 
@@ -80,7 +83,22 @@ class FilamentPointCloudActivity: AppCompatActivity() {
             }
             renderer.requestRender()
         }
+        btn_screenshot.setOnClickListener {
+            BitmapUtils.screenShot(surfaceView)
+        }
+
+        mv_mark.addListener(object : IMarkStateListener{
+            override fun onTouchEvent(event: MotionEvent) {
+                renderer.onTouch(event)
+                renderer.requestRender()
+            }
+
+            override fun onSelected() {
+
+            }
+        })
     }
+
 
     private fun createData(): NormalPoint{
         val pointList = mutableListOf<Vertex>()

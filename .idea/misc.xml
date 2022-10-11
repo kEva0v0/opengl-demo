@@ -8,7 +8,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="biz/filament/src/main/res/layout/filament_layout.xml" value="0.11879432624113476" />
+        <entry key="biz/filament/src/main/res/drawable/icon_mark.xml" value="0.2215" />
+        <entry key="biz/filament/src/main/res/layout/filament_layout.xml" value="0.375" />
+        <entry key="biz/filament/src/main/res/layout/layout_mark.xml" value="0.21458333333333332" />
         <entry key="biz/opengl/src/main/res/layout/firstopengl_triangle.xml" value="0.16666666666666666" />
         <entry key="biz/rajawali/src/main/res/layout/layout_rajawali.xml" value="0.184375" />
       </map>

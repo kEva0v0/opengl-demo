@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <SurfaceView
         android:id="@+id/sv_filament"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <com.mashiro.filament.mark.MarkView
+        android:id="@+id/mv_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/iv_mark_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_mark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </com.mashiro.filament.mark.MarkView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +58,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="右"/>
+        <Button
+            android:id="@+id/btn_screenshot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="截图"/>
     </LinearLayout>
 
 </FrameLayout>

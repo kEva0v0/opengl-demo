@@ -1,4 +1,4 @@
-package com.mashiro.filament
+package com.mashiro.filament.utils
 
 import android.app.Activity
 import java.nio.ByteBuffer

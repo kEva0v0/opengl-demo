@@ -1,4 +1,4 @@
-package com.mashiro.filament
+package com.mashiro.filament.utils
 
 import android.graphics.Color
 import java.util.*
@@ -9,7 +9,7 @@ object RandomColorUtils {
         val r = random.nextFloat() * 255
         val g = random.nextFloat() * 255
         val b = random.nextFloat() * 255
-        return Color.argb(255, r.toInt(), g.toInt(), b.toInt())
-//        return Color.GREEN
+//        return Color.argb(255, r.toInt(), g.toInt(), b.toInt())
+        return Color.GREEN
     }
 }
