@@ -1,4 +1,4 @@
-package com.mashiro.filament.bean
+package com.mashiro.filament.model
 
 data class Point(
     var x: Float,

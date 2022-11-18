@@ -7,7 +7,7 @@ import android.view.SurfaceView
 import com.google.android.filament.*
 import com.google.android.filament.utils.Manipulator
 import com.google.android.filament.utils.Utils
-import com.mashiro.filament.MyModeViewer
+import com.mashiro.filament.MyModelViewer
 
 abstract class BaseRenderer<Model>(
     private val surfaceView: SurfaceView,
@@ -21,11 +21,11 @@ abstract class BaseRenderer<Model>(
 
     private val choreographer = Choreographer.getInstance()
     private val frameCallback = FrameCallback()
-    protected lateinit var modelViewer: MyModeViewer
+    protected lateinit var modelViewer: MyModelViewer
     protected lateinit var material: Material
 
     private fun initEngine(manipulatorModel: Manipulator.Mode) {
-        modelViewer = MyModeViewer(surfaceView)
+        modelViewer = MyModelViewer(surfaceView)
         modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
     }
 
@@ -44,11 +44,11 @@ abstract class BaseRenderer<Model>(
     }
 
     fun onTouch(event: MotionEvent) {
-        modelViewer.onTouchEvent(event)
+        modelViewer?.onTouchEvent(event)
     }
 
     fun requestRender(){
-        modelViewer.render(System.nanoTime())
+        modelViewer?.render(System.nanoTime())
     }
 
     inner class FrameCallback : Choreographer.FrameCallback {

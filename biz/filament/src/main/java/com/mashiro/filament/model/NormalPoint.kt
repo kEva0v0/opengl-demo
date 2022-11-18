@@ -1,14 +1,11 @@
-package com.mashiro.filament.bean
+package com.mashiro.filament.model
 
 import android.graphics.Color
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-
-data class Vertex(val x: Float, val y: Float, val z: Float, val color: Int)
-
 data class NormalPoint(
-    val pointList: MutableList<Vertex>,
+    val pointList: MutableList<Point>,
     val vertexMatrix: FloatArray = floatArrayOf(1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f)
 ){
     companion object {
@@ -35,7 +32,8 @@ data class NormalPoint(
     val vertexColor: ByteBuffer by lazy {
         val byteBuffer = ByteBuffer.allocate(getPointSize() * getColorSize()).order(ByteOrder.nativeOrder())
         pointList.forEachIndexed { index, point ->
-            byteBuffer.putInt(point.color)
+            val color = Color.argb(point.a,point.r,point.g,point.b)
+            byteBuffer.putInt(color)
         }
         byteBuffer.flip()
         byteBuffer

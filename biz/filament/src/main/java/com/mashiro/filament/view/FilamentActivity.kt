@@ -114,7 +114,7 @@ class FilamentActivity : Activity() {
     }
 
     private fun setupScene() {
-//        loadMaterial()
+        loadMaterial()
         createMesh()
 
         // To create a renderable we first create a generic entity
@@ -126,9 +126,9 @@ class FilamentActivity : Activity() {
             // Overall bounding box of the renderable
             .boundingBox(Box(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.01f))
             // Sets the mesh data of the first primitive
-            .geometry(0, PrimitiveType.TRIANGLES, vertexBuffer, indexBuffer, 0, 3)
+            .geometry(0, PrimitiveType.TRIANGLE_STRIP, vertexBuffer, indexBuffer, 0, 4)
             // Sets the material of the first primitive
-//            .material(0, material.defaultInstance)
+            .material(0, material.defaultInstance)
             .build(engine, renderable)
 
         // Add the entity to the scene to render it
@@ -138,7 +138,7 @@ class FilamentActivity : Activity() {
     }
 
     private fun loadMaterial() {
-        readUncompressedAsset("materials/baked_color.filamat").let {
+        readUncompressedAsset("materials/grid.filamat").let {
             material = Material.Builder().payload(it, it.remaining()).build(engine)
         }
     }
@@ -162,16 +162,15 @@ class FilamentActivity : Activity() {
         }
 
         // We are going to generate a single triangle
-        val vertexCount = 3
-        val a1 = PI * 2.0 / 3.0
-        val a2 = PI * 4.0 / 3.0
+        val vertexCount = 4
 
         val vertexData = ByteBuffer.allocate(vertexCount * vertexSize)
             // It is important to respect the native byte order
             .order(ByteOrder.nativeOrder())
-            .put(Vertex(1.0f,              0.0f,              0.0f, 0xffff0000.toInt()))
-            .put(Vertex(cos(a1).toFloat(), sin(a1).toFloat(), 0.0f, 0xff00ff00.toInt()))
-            .put(Vertex(cos(a2).toFloat(), sin(a2).toFloat(), 0.0f, 0xff0000ff.toInt()))
+            .put(Vertex(0.55f,              0.55f,              0.0f, 0xffff0000.toInt()))
+            .put(Vertex(-0.55f, 0.55f, 0.0f, 0xff00ff00.toInt()))
+            .put(Vertex(0.55f, -0.55f, 0.0f, 0xff0000ff.toInt()))
+            .put(Vertex(-0.55f, -0.55f, 0.0f, 0xff0000ff.toInt()))
             // Make sure the cursor is pointing in the right place in the byte buffer
             .flip()
 
@@ -199,10 +198,11 @@ class FilamentActivity : Activity() {
             .putShort(0)
             .putShort(1)
             .putShort(2)
+            .putShort(3)
             .flip()
 
         indexBuffer = IndexBuffer.Builder()
-            .indexCount(3)
+            .indexCount(4)
             .bufferType(IndexBuffer.Builder.IndexType.USHORT)
             .build(engine)
         indexBuffer.setBuffer(engine, indexData)
@@ -252,7 +252,7 @@ class FilamentActivity : Activity() {
         engine.destroyRenderer(renderer)
         engine.destroyVertexBuffer(vertexBuffer)
         engine.destroyIndexBuffer(indexBuffer)
-//        engine.destroyMaterial(material)
+        engine.destroyMaterial(material)
         engine.destroyView(view)
         engine.destroyScene(scene)
         engine.destroyCameraComponent(camera.entity)
@@ -327,3 +327,4 @@ class FilamentActivity : Activity() {
         }
     }
 }
+

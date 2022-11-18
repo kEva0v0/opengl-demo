@@ -8,12 +8,9 @@ import android.view.TextureView
 import com.google.android.filament.*
 import com.google.android.filament.android.DisplayHelper
 import com.google.android.filament.android.UiHelper
-import com.google.android.filament.gltfio.AssetLoader
-import com.google.android.filament.gltfio.ResourceLoader
-import com.google.android.filament.gltfio.UbershaderProvider
 import com.google.android.filament.utils.*
 
-class MyModeViewer(
+class MyModelViewer(
     val engine: Engine,
     private val uiHelper: UiHelper
 ) : android.view.View.OnTouchListener  {
@@ -113,7 +110,7 @@ class MyModeViewer(
                 uiHelper.detach()
 
                 engine.destroyRenderer(renderer)
-                engine.destroyView(this@MyModeViewer.view)
+                engine.destroyView(this@MyModelViewer.view)
                 engine.destroyScene(scene)
                 engine.destroyCameraComponent(camera.entity)
                 EntityManager.get().destroy(camera.entity)
