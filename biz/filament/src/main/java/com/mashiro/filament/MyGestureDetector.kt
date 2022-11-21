@@ -79,12 +79,12 @@ class MyGestureDetector(private val view: View, private val manipulator: Manipul
                 }
 
                 if (event.pointerCount == 2) {
-//                    tentativePanEvents.add(touch)
+                    tentativePanEvents.add(touch)
                     tentativeZoomEvents.add(touch)
                 }
 
                 if (isOrbitGesture()) {
-                    manipulator.grabBegin(touch.x, touch.y, true)
+                    manipulator.grabBegin(touch.x, touch.y, false)
                     currentGesture = Gesture.ORBIT
                     return
                 }
@@ -95,11 +95,11 @@ class MyGestureDetector(private val view: View, private val manipulator: Manipul
                     return
                 }
 
-//                if (isPanGesture()) {
-//                    manipulator.grabBegin(touch.x, touch.y, true)
-//                    currentGesture = Gesture.PAN
-//                    return
-//                }
+                if (isPanGesture()) {
+                    manipulator.grabBegin(touch.x, touch.y, true)
+                    currentGesture = Gesture.PAN
+                    return
+                }
             }
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 endGesture()

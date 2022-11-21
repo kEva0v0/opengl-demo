@@ -9,25 +9,10 @@
 
 material {
     name : baked_color,
-
-        parameters : [
-            {
-               type : float4,
-               name : floorColor
-            },
-            {
-                type : float4,
-                name : lineColor
-            },
-            {
-                type : int,
-                name : lineWidth
-            }
-        ],
     // Lists the required vertex attributes
     // Here we only need a color (RGBA)
     requires : [
-        color
+        position
     ],
 
     // This material disables all lighting
@@ -40,6 +25,7 @@ fragment {
         float4 lineColor = float4(1.0,1.0,1.0,0.1);
         lineColor.rgb *= lineColor.a;
         float4 floorColor = float4(0.035, 0.035, 0.035, 1.0);
+        // floorColor = float4(1.0, 0.0, 0.0, 1.0);
         float lineSplit = 0.1;
         if (mod(getWorldPosition().x,lineSplit) < 0.01 || mod(getWorldPosition().y,lineSplit) < 0.01) {
             return lineColor;

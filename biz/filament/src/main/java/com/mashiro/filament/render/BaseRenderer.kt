@@ -11,23 +11,24 @@ import com.mashiro.filament.MyModelViewer
 
 abstract class BaseRenderer<Model>(
     private val surfaceView: SurfaceView,
+    private val mmodelViewer: MyModelViewer,
     model: Manipulator.Mode = Manipulator.Mode.ORBIT
 ) {
 
     init {
-        Utils.init()
-        initEngine(model)
+//        Utils.init()
+//        initEngine(model)
     }
 
     private val choreographer = Choreographer.getInstance()
     private val frameCallback = FrameCallback()
-    protected lateinit var modelViewer: MyModelViewer
+    protected val modelViewer: MyModelViewer = mmodelViewer
     protected lateinit var material: Material
 
-    private fun initEngine(manipulatorModel: Manipulator.Mode) {
-        modelViewer = MyModelViewer(surfaceView)
-        modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
-    }
+//    private fun initEngine(manipulatorModel: Manipulator.Mode) {
+//        modelViewer = MyModelViewer(surfaceView)
+//        modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
+//    }
 
     abstract fun loadMaterial(activity: Activity)
 
@@ -35,6 +36,7 @@ abstract class BaseRenderer<Model>(
 
     abstract fun destroy()
 
+    // TODO：下面的全部要移走
     fun resume(){
         choreographer.postFrameCallback(frameCallback)
     }

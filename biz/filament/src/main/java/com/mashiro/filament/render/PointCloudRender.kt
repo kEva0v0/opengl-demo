@@ -7,7 +7,7 @@ import com.mashiro.filament.MyModelViewer
 import com.mashiro.filament.utils.AssetUtils
 import com.mashiro.filament.model.NormalPoint
 
-class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(surfaceView), BaseAction<NormalPoint> {
+class PointCloudRender(surfaceView: SurfaceView, modelViewer: MyModelViewer) : BaseRenderer<NormalPoint>(surfaceView, modelViewer), BaseAction<NormalPoint> {
 
     companion object {
         private const val FLOAT_SIZE = 4f
@@ -41,7 +41,8 @@ class PointCloudRender(surfaceView: SurfaceView) : BaseRenderer<NormalPoint>(sur
             .bufferType(IndexBuffer.Builder.IndexType.USHORT)
             .build(modelViewer.engine)
         indexBuffer.setBuffer(modelViewer.engine, model.indexData)
-        entityMap[model] = EntityManager.get().create()
+        entityMap[model] = modelViewer.engine.entityManager.create()
+
         RenderableManager.Builder(1)
             .boundingBox(Box(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 100.0f))
             .geometry(0, RenderableManager.PrimitiveType.POINTS, vertexBuffer, indexBuffer)

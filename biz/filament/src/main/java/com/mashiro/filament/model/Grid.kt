@@ -8,12 +8,13 @@ import java.nio.ByteOrder
 
 class Grid {
     val boundSize = 100f
+    // 这里要保证平面在水平以下，不会遮挡住z轴
     val pointList = listOf(
         // +X, +Z quadrant
-        Point(boundSize, boundSize, 0f),
-        Point(-boundSize, boundSize, 0f),
-        Point(boundSize, -boundSize, 0f),
-        Point(-boundSize, -boundSize, 0f)
+        Point(boundSize, boundSize, -1f),
+        Point(-boundSize, boundSize, -1f),
+        Point(boundSize, -boundSize, -1f),
+        Point(-boundSize, -boundSize, -1f)
     )
     val floorColor = floatArrayOf(34f / 255, 37f / 255, 42f / 255, 1f)
     val lineColor = floatArrayOf(1f, 1f, 1f, 0.1f)

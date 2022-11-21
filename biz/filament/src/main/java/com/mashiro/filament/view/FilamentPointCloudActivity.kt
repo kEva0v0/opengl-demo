@@ -20,7 +20,7 @@ import java.util.*
 class FilamentPointCloudActivity: AppCompatActivity() {
 
     companion object {
-        private const val MAX_POINT_CNT = 50000
+        private const val MAX_POINT_CNT = 100000
         private const val MAX_POINT_CLOUD = 20
     }
 
@@ -40,11 +40,13 @@ class FilamentPointCloudActivity: AppCompatActivity() {
 
     private fun initRender(){
         val surfaceView = findViewById<SurfaceView>(R.id.sv_filament)
+        Utils.init()
+        val modelViewer = MyModelViewer(surfaceView)
+        modelViewer.scene.skybox = Skybox.Builder().color(0.035f, 0.035f, 0.035f, 1.0f).build(modelViewer.engine)
 
-        renderer = PointCloudRender(surfaceView)
+        renderer = PointCloudRender(surfaceView, modelViewer)
+        gridRender = GridRender(surfaceView, modelViewer)
         renderer?.loadMaterial(this)
-
-        gridRender = GridRender(surfaceView)
         gridRender?.loadMaterial(this)
     }
 
@@ -60,9 +62,9 @@ class FilamentPointCloudActivity: AppCompatActivity() {
         }
         btn_add.setOnClickListener {
             randomPoint()
-            renderer?.requestRender()
             gridRender?.addFrame(Grid())
-            gridRender?.requestRender()
+            renderer?.requestRender()
+//            gridRender?.requestRender()
         }
         btn_up.setOnClickListener {
             dataMap.forEach {
@@ -126,9 +128,9 @@ class FilamentPointCloudActivity: AppCompatActivity() {
         for (i in 0 until MAX_POINT_CNT) {
             pointList.add(
                 Point(
-                    random.nextFloat() * 2f - 1f,
-                    random.nextFloat() * 2f - 1f,
-                    0f,
+                    random.nextFloat() * 3f,
+                    random.nextFloat() * 3f,
+                    random.nextFloat() * 3f,
                     random.nextInt(255),
                     random.nextInt(255),
                     random.nextInt(255),
