@@ -18,7 +18,7 @@ class MyModelViewer(
     val view: View
     val camera: Camera
     val renderer: Renderer
-    var cameraFocalLength = 28f
+    var cameraFocalLength = 10f
         set(value) {
             field = value
             updateCameraProjection()
@@ -54,8 +54,11 @@ class MyModelViewer(
     ) : this(engine, uiHelper) {
         cameraManipulator = manipulator ?: Manipulator.Builder()
             .targetPosition(0f,0f,0f)
+            .upVector(0f,0f,-1f)
+            .orbitHomePosition(0f,10f,0f)
             .viewport(surfaceView.width, surfaceView.height)
             .orbitSpeed(0.01f,0.01f)
+            .zoomSpeed(0.1f)
             .build(Manipulator.Mode.ORBIT)
 
         this.surfaceView = surfaceView

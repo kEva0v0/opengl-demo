@@ -18,30 +18,11 @@
             android:layout_height="wrap_content"
             android:text="add"/>
         <Button
-            android:id="@+id/btn_add_all"
+            android:id="@+id/btn_format_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add all"/>
-        <Button
-            android:id="@+id/btn_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="上"/>
-        <Button
-            android:id="@+id/btn_down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下"/>
-        <Button
-            android:id="@+id/btn_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="左"/>
-        <Button
-            android:id="@+id/btn_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="右"/>
+            android:text="format camera"/>
+
         <Button
             android:id="@+id/btn_screenshot"
             android:layout_width="wrap_content"

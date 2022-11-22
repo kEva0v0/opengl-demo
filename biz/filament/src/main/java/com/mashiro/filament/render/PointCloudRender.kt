@@ -28,13 +28,12 @@ class PointCloudRender(surfaceView: SurfaceView, modelViewer: MyModelViewer) : B
 
         val vertexBuffer = VertexBuffer.Builder()
             .vertexCount(model.getPointSize())
-            .bufferCount(2)
-            .attribute(VertexBuffer.VertexAttribute.POSITION, 0, VertexBuffer.AttributeType.FLOAT3, 0, model.getXYZDataSize())
-            .attribute(VertexBuffer.VertexAttribute.COLOR,    1, VertexBuffer.AttributeType.UBYTE4,0, model.getPointSize())
+            .bufferCount(1)
+            .attribute(VertexBuffer.VertexAttribute.POSITION, 0, VertexBuffer.AttributeType.FLOAT3, 0, model.getXYZDataSize()+model.getColorSize())
+            .attribute(VertexBuffer.VertexAttribute.COLOR,    0, VertexBuffer.AttributeType.UBYTE4,model.getXYZDataSize(), model.getXYZDataSize()+model.getColorSize())
             .normalized(VertexBuffer.VertexAttribute.COLOR)
             .build(modelViewer.engine)
         vertexBuffer.setBufferAt(modelViewer.engine,0, model.vertexData)
-        vertexBuffer.setBufferAt(modelViewer.engine, 1, model.vertexColor)
 
         val indexBuffer = IndexBuffer.Builder()
             .indexCount(model.getPointSize())

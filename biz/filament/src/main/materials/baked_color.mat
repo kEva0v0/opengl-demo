@@ -20,6 +20,12 @@ material {
     shadingModel : unlit,
 }
 
+vertex {
+    void materialVertex(inout MaterialVertexInputs material) {
+        gl_PointSize = 4.0;
+    }
+}
+
 fragment {
     void material(inout MaterialInputs material) {
         // You must always call the prepareMaterial() function
