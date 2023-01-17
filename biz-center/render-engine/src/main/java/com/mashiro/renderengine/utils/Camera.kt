@@ -14,6 +14,11 @@ import com.google.android.filament.utils.Manipulator as CameraManipulator
 typealias ClipSpacePosition = Float4
 
 /**
+ * CopyFrom @scene-view https://github.com/SceneView/sceneview-android
+ * 有些计算错误，进行了修复
+ */
+
+/**
  * The camera's projection matrix
  *
  * The projection matrix used for rendering always has its far plane set to infinity.

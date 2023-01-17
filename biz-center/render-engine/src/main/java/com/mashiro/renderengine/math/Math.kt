@@ -3,6 +3,10 @@ package com.mashiro.renderengine.math
 import com.google.android.filament.Box
 import dev.romainguy.kotlin.math.*
 
+/**
+ * CopyFrom @scene-view https://github.com/SceneView/sceneview-android
+ */
+
 const val DEFAULT_EPSILON = 0.001f
 fun transformWithQuaternion(translation: Translation = Translation(), quaternion: Quaternion = Quaternion(), scale: Scale = Scale(1f,1f,1f)) =
     translation(translation) * rotation(quaternion) * scale(scale)
