@@ -127,7 +127,7 @@ class MyModelViewer(
         if (!uiHelper.isReadyToRender) {
             return
         }
-
+        val start = System.nanoTime()
         cameraManipulator.getLookAt(eyePos, target, upward)
         camera.lookAt(
             eyePos[0], eyePos[1], eyePos[2],
@@ -140,6 +140,8 @@ class MyModelViewer(
         if (renderer.beginFrame(swapChain!!, frameTimeNanos)) {
             renderer.render(view)
             renderer.endFrame()
+            val duration = (System.nanoTime() - start) / 1000000.0
+            Log.i("modelViewer-onDraw", "onDrawFrame() duration cost $duration ms")
         }
     }
 

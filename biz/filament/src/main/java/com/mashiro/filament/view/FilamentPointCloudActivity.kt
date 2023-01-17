@@ -2,6 +2,7 @@ package com.mashiro.filament.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.SurfaceView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +69,9 @@ class FilamentPointCloudActivity: AppCompatActivity() {
             renderer?.onTouch(event)
             gridRender?.onTouch(event)
             renderer?.requestRender()
+            modelViewer.view.viewport.let {
+                Log.d("zyc", "l:${it.left} b:${it.bottom} r:${it.left+it.width-1} t:${it.width+it.height-1}")
+            }
             true
         }
         btn_add.setOnClickListener {
@@ -80,7 +84,7 @@ class FilamentPointCloudActivity: AppCompatActivity() {
                     }
                     pt
                 }
-//                for (i in 0..100){
+//                for (i in 0..50){
 //                    val emptyList = mutableListOf<Point>()
 //                    normalPoint.pointList.forEach {
 //                        val offsetX = Random().nextFloat() * 0.1f
@@ -89,6 +93,7 @@ class FilamentPointCloudActivity: AppCompatActivity() {
 //                    }
 //                    val newPoint = NormalPoint(emptyList)
                     renderer?.addFrame(normalPoint)
+                    gridRender?.addFrame(Grid())
                     renderer?.requestRender()
 //                }
             }

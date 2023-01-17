@@ -32,7 +32,7 @@ class GridRender(surfaceView: SurfaceView, modelViewer: MyModelViewer): BaseRend
         indexBuffer.setBuffer(modelViewer.engine, model.indexData)
         gridEntity = modelViewer.engine.entityManager.create()
         RenderableManager.Builder(1)
-            .boundingBox(Box(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 1.0f))
+            .boundingBox(Box(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 100.0f))
             .geometry(0, RenderableManager.PrimitiveType.TRIANGLE_STRIP, vertexBuffer, indexBuffer, 0, model.pointList.size)
             .material(0, material.defaultInstance)
             .build(modelViewer.engine, gridEntity)
