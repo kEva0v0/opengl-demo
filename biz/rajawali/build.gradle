@@ -1,6 +1,4 @@
 apply from: rootProject.file('scripts/basebiz.gradle')
-
-
 dependencies {
     implementation RAJAWALI
 }

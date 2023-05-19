@@ -80,7 +80,7 @@ interface TransformComponent: RelationComponent, GeometryComponent {
         }
 
     var worldTransformRotation: Rotation
-        get() = worldTransform.rotation
+        get() = worldTransform.quaternion.toEulerAngles()
         set(value) {
             transformQuaternion = getWorldToParent().toQuaternion() * Quaternion.fromEuler(value)
         }

@@ -1,0 +1,33 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.10'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = "com.mashiro.dependency"
+            implementationClass = "com.mashiro.dependency.DependencyPlugin"
+        }
+    }
+}
