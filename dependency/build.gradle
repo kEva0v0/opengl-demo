@@ -24,10 +24,10 @@ sourceSets {
 }
 
 gradlePlugin {
-    plugins {
-        simplePlugin {
-            id = "com.mashiro.dependency"
-            implementationClass = "com.mashiro.dependency.DependencyPlugin"
-        }
+    // Add fake plugin, if you don't have any
+    plugins.register("class-loader-plugin") {
+        id = "com.mashiro.dependency"
+        implementationClass = "com.mashiro.dependency.DependencyPlugin"
     }
+    // Or provide your implemented plugins
 }

@@ -1,0 +1,121 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.unity3d.player" >
+5
+6    <uses-sdk
+7        android:minSdkVersion="21"
+7-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml
+8        android:targetSdkVersion="28" />
+8-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml
+9
+10    <uses-feature android:glEsVersion="0x00030000" />
+10-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:18:3-52
+10-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:18:17-49
+11    <uses-feature
+11-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:19:3-91
+12        android:name="android.hardware.vulkan.version"
+12-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:19:17-63
+13        android:required="false" />
+13-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:19:64-88
+14
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:20:3-65
+15-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:20:20-62
+16
+17    <uses-feature
+17-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:21:3-88
+18        android:name="android.hardware.touchscreen"
+18-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:21:17-60
+19        android:required="false" />
+19-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:21:61-85
+20    <uses-feature
+20-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:22:3-99
+21        android:name="android.hardware.touchscreen.multitouch"
+21-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:22:17-71
+22        android:required="false" />
+22-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:22:72-96
+23    <uses-feature
+23-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:23:3-108
+24        android:name="android.hardware.touchscreen.multitouch.distinct"
+24-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:23:17-80
+25        android:required="false" />
+25-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:23:81-105
+26
+27    <application android:extractNativeLibs="true" >
+27-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:3:3-17:17
+27-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:3:16-48
+28        <activity
+28-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:5-11:16
+29            android:name="com.mashiro.unity.UnityPlayerActivity"
+29-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:15-67
+30            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+30-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:179-360
+31            android:hardwareAccelerated="false"
+31-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:396-431
+32            android:launchMode="singleTask"
+32-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:147-178
+33            android:resizeableActivity="false"
+33-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:361-395
+34            android:screenOrientation="fullUser"
+34-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:110-146
+35            android:theme="@style/UnityThemeSelector" >
+35-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:68-109
+36            <intent-filter>
+36-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:5:7-8:23
+37                <action android:name="android.intent.action.MAIN" />
+37-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:6:9-61
+37-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:6:17-58
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:7:9-69
+39-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:7:19-66
+40            </intent-filter>
+41
+42            <meta-data
+42-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:9:7-82
+43                android:name="unityplayer.UnityActivity"
+43-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:9:18-58
+44                android:value="true" />
+44-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:9:59-79
+45            <meta-data
+45-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:10:7-78
+46                android:name="android.notch_support"
+46-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:10:18-54
+47                android:value="true" />
+47-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:10:55-75
+48        </activity>
+49
+50        <meta-data
+50-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:12:5-69
+51            android:name="unity.splash-mode"
+51-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:12:16-48
+52            android:value="0" />
+52-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:12:49-66
+53        <meta-data
+53-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:13:5-74
+54            android:name="unity.splash-enable"
+54-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:13:16-50
+55            android:value="True" />
+55-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:13:51-71
+56        <meta-data
+56-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:14:5-78
+57            android:name="unity.launch-fullscreen"
+57-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:14:16-54
+58            android:value="True" />
+58-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:14:55-75
+59        <meta-data
+59-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:15:5-84
+60            android:name="unity.allow-resizable-window"
+60-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:15:16-59
+61            android:value="False" />
+61-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:15:60-81
+62        <meta-data
+62-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:16:5-81
+63            android:name="notch.config"
+63-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:16:16-43
+64            android:value="portrait|landscape" />
+64-->/Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:16:44-78
+65    </application>
+66
+67</manifest>
