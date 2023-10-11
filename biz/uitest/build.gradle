@@ -1,0 +1,6 @@
+apply from: rootProject.file('scripts/basebiz.gradle')
+
+dependencies {
+    implementation "com.airbnb.android:lottie:5.2.0"
+    implementation "com.google.code.gson:gson:2.9.0"
+}

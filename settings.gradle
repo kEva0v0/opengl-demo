@@ -1,8 +1,14 @@
 rootProject.name = "opengl-demo"
+// cocos
+include ':libcocos2dx'
+project(':libcocos2dx').projectDir = new File('/Applications/Cocos/Creator/2.4.11/CocosCreator.app/Contents/Resources/cocos2d-x/cocos/platform/android/libcocos2dx')
+
 include ':app'
 include ':biz:opengl'
 include ':biz:filament'
 include ':biz:rajawali'
+include ':biz:uitest'
+include ':biz:libservice'
 include ':biz-center:render-engine'
-includeBuild('dependency')
-include ':biz:unityLibrary'
+
+//include ':biz:unityLibrary'

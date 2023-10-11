@@ -34,4 +34,18 @@
         android:layout_height="50dp"
         android:text="打开自己写的unity"
         android:gravity="center"/>
+    <Button
+        android:id="@+id/btn_test_cocos"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="打开自己写的cocos"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/btn_test_loading"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="测试一下imageSpan的loading"
+        android:gravity="center"/>
+
+
 </LinearLayout>

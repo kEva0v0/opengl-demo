@@ -4,33 +4,23 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT">
-            <builds>
-              <build path="$PROJECT_DIR$/dependency" name="dependency">
-                <projects>
-                  <project path="$PROJECT_DIR$/dependency" />
-                </projects>
-              </build>
-            </builds>
-          </compositeBuild>
-        </compositeConfiguration>
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="corretto-11" />
         <option name="modules">
           <set>
+            <option value="/Applications/Cocos/Creator/3.8.0/CocosCreator.app/Contents/Resources/resources/3d/engine/native/cocos/platform/android/libcocos2dx" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/biz" />
             <option value="$PROJECT_DIR$/biz-center" />
             <option value="$PROJECT_DIR$/biz-center/render-engine" />
             <option value="$PROJECT_DIR$/biz/filament" />
+            <option value="$PROJECT_DIR$/biz/libservice" />
             <option value="$PROJECT_DIR$/biz/opengl" />
             <option value="$PROJECT_DIR$/biz/rajawali" />
-            <option value="$PROJECT_DIR$/biz/unityLibrary" />
-            <option value="$PROJECT_DIR$/dependency" />
+            <option value="$PROJECT_DIR$/biz/uitest" />
           </set>
         </option>
       </GradleProjectSettings>

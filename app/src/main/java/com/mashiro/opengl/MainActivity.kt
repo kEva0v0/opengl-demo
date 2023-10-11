@@ -3,10 +3,12 @@ package com.mashiro.opengl
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mashiro.cocos.CocosActivityDemo
 import com.mashiro.filament.view.FilamentActivity
 import com.mashiro.filament.view.FilamentPointCloudActivity
 import com.mashiro.opengl.firstopengl.TriangleActivity
-import com.mashiro.unity.UnityPlayerActivity
+import com.mashiro.uitest.UITestActivity
+//import com.mashiro.unity.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +28,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btn_test_unity.setOnClickListener {
-            val intent = Intent(this, UnityPlayerActivity::class.java)
+//            val intent = Intent(this, UnityPlayerActivity::class.java)
+//            startActivity(intent)
+        }
+        btn_test_cocos.setOnClickListener {
+            val intent = Intent(this, CocosActivityDemo::class.java)
+            startActivity(intent)
+        }
+        btn_test_loading.setOnClickListener {
+            val intent = Intent(this, UITestActivity::class.java)
             startActivity(intent)
         }
     }

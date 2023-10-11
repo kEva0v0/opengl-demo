@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.mashiro.uitest.testspan.TestMyTextView
+        android:id="@+id/tv_test_image_span"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="collect"/>
+        <Button
+            android:id="@+id/btn_emit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="emit"/>
+        <Button
+            android:id="@+id/btn_emit_withanim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="emit_anim"/>
+    </LinearLayout>
+</FrameLayout>

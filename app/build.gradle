@@ -1,6 +1,4 @@
-plugins {
-    id "com.mashiro.dependency"
-}
+
 apply from: rootProject.file('scripts/application.gradle')
 
 dependencies {
