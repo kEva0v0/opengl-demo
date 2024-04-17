@@ -9,6 +9,20 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/btn_open_flowtest"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="打开flowTest"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_open_color"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="打开Color"
+        android:gravity="center"/>
+
+    <Button
         android:id="@+id/btn_opengl"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -34,4 +48,7 @@
         android:layout_height="50dp"
         android:text="打开自己写的unity"
         android:gravity="center"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

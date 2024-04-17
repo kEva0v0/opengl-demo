@@ -27,8 +27,10 @@
             <option value="$PROJECT_DIR$/biz-center" />
             <option value="$PROJECT_DIR$/biz-center/render-engine" />
             <option value="$PROJECT_DIR$/biz/filament" />
+            <option value="$PROJECT_DIR$/biz/flow-test" />
             <option value="$PROJECT_DIR$/biz/opengl" />
             <option value="$PROJECT_DIR$/biz/rajawali" />
+            <option value="$PROJECT_DIR$/biz/ui-test" />
             <option value="$PROJECT_DIR$/biz/unityLibrary" />
             <option value="$PROJECT_DIR$/dependency" />
           </set>

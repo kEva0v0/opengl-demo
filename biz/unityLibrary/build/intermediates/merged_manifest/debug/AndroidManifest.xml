@@ -28,6 +28,7 @@
         <activity
             android:name="com.mashiro.unity.UnityPlayerActivity"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
             android:resizeableActivity="false"

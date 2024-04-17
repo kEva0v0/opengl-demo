@@ -18,19 +18,21 @@ ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidMa
 activity#com.mashiro.unity.UnityPlayerActivity
 ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:5-11:16
 	android:screenOrientation
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:110-146
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:134-170
 	android:launchMode
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:147-178
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:171-202
 	android:hardwareAccelerated
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:396-431
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:420-455
+	android:exported
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:15-38
 	android:resizeableActivity
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:361-395
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:385-419
 	android:configChanges
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:179-360
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:203-384
 	android:theme
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:68-109
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:92-133
 	android:name
-		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:15-67
+		ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:4:39-91
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/admin/personal/opengl-demo/biz/unityLibrary/src/main/AndroidManifest.xml:5:7-8:23
 action#android.intent.action.MAIN
