@@ -23,6 +23,13 @@
         android:gravity="center"/>
 
     <Button
+        android:id="@+id/btn_open_uitest"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="打开UITest"
+        android:gravity="center"/>
+
+    <Button
         android:id="@+id/btn_opengl"
         android:layout_width="match_parent"
         android:layout_height="50dp"

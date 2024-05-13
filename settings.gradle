@@ -4,7 +4,6 @@ include ':biz:opengl'
 include ':biz:filament'
 include ':biz:rajawali'
 include ':biz-center:render-engine'
-includeBuild('dependency')
 include ':biz:unityLibrary'
 include ':biz:flow-test'
 include ':biz:ui-test'

@@ -6,13 +6,13 @@ buildscript {
         google()
         jcenter()
         maven { url "https://www.jitpack.io" }
-        flatDir {dirs '/dependency/build/libs'}
+        // flatDir {dirs '/dependency/build/libs'}
     }
     dependencies {
         print("---------------analysis root project dependencies----------------\n")
         classpath "com.android.tools.build:gradle:7.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
-        classpath ":dependency"
+        // classpath ":dependency"
         // classpath 'com.smallsoho.mobcase:McImage:1.5.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

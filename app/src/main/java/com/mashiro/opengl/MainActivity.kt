@@ -8,6 +8,7 @@ import com.mashiro.filament.view.FilamentPointCloudActivity
 import com.mashiro.flowtest.ColorActivity
 import com.mashiro.flowtest.FlowActivity
 import com.mashiro.opengl.firstopengl.TriangleActivity
+import com.mashiro.uitest.UIActivity
 import com.mashiro.unity.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         }
         btn_open_color.setOnClickListener {
             val intent = Intent(this, ColorActivity::class.java)
+            startActivity(intent)
+        }
+        btn_open_uitest.setOnClickListener {
+            val intent = Intent(this, UIActivity::class.java)
             startActivity(intent)
         }
         btn_opengl.setOnClickListener {

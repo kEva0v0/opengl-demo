@@ -34,4 +34,8 @@ dependencies {
     // optional - ReactiveStreams support for LiveData
     implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version")
 
+    // Kotlin
+    implementation "androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03"
+
+
 }
