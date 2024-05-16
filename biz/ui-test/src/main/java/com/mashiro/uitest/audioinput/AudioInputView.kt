@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Interpolator
@@ -45,6 +46,7 @@ class AudioInputView: ConstraintLayout {
 
     // region 状态变量
     private var inputModel: InputModel = InputModel.NORMAL
+    private var startTime = 0L
     // endregion
 
     private fun init(context: Context, attrs: AttributeSet?) {
@@ -94,20 +96,24 @@ class AudioInputView: ConstraintLayout {
         val customProperty = object : FloatPropertyCompat<View>("width") {
             override fun getValue(view: View): Float {
                 // 获取自定义属性的当前值
-                return view.width.toFloat()
+                return 0f
             }
 
             override fun setValue(view: View, value: Float) {
-                view.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                    width = value.toInt()
-                }
+//                view.updateLayoutParams<ConstraintLayout.LayoutParams> {
+//                    width = value.toInt()
+//                }
             }
         }
 
         inputSpringAnimation = SpringAnimation(demo_input_view, customProperty)
-        inputSpringAnimation
+        inputSpringAnimation?.addUpdateListener{ _, animateValue, _ ->
+            val curTime = System.currentTimeMillis()
+            Log.d("zyc", "duration:${curTime - startTime}, value:$animateValue")
+            startTime = curTime
+        }
         val springForce = SpringForce()
-        springForce.finalPosition = targetWidth.toFloat() // 设置自定义属性的目标值
+        springForce.finalPosition = 1f // 设置自定义属性的目标值
         springForce.stiffness = 711.1f
         val mass = 1f
         springForce.dampingRatio = 40 / (2f * sqrt(springForce.stiffness * mass))
@@ -115,10 +121,12 @@ class AudioInputView: ConstraintLayout {
         when{
             preModel == InputModel.NORMAL && curModel == InputModel.AUDIO -> {
                 iconRotateAnimator?.start()
+                startTime = System.currentTimeMillis()
                 inputSpringAnimation?.start()
             }
             preModel == InputModel.AUDIO && curModel == InputModel.NORMAL -> {
                 iconRotateAnimator?.reverse()
+                startTime = System.currentTimeMillis()
                 inputSpringAnimation?.start()
             }
         }

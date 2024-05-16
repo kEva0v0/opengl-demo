@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/demo_input_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +19,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tv_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="输入输入"
+            android:layout_gravity="center"
+            android:textSize="20sp" />
 
         <FrameLayout
             android:id="@+id/icon_audio_container"
@@ -39,5 +47,5 @@
                 android:src="@drawable/icon_listening"
                 android:alpha="0"/>
         </FrameLayout>
-    </LinearLayout>
+    </FrameLayout>
 </merge>
