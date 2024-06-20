@@ -4,5 +4,7 @@
 
     <application>
         <activity android:name=".UIActivity"/>
+        <activity android:name=".DemoActivity"/>
+        <activity android:name=".Demo2Activity"/>
     </application>
 </manifest>
