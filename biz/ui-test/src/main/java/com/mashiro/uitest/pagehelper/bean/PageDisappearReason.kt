@@ -6,5 +6,7 @@ enum class PageDisappearReason {
     // 去别的Fragment
     JUMP_TO_FRAGMENT,
     // 去后台
-    JUMP_TO_BACKGROUND
+    JUMP_TO_BACKGROUND,
+    // 被退出
+    QUIT
 }

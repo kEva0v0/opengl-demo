@@ -4,6 +4,6 @@ import com.mashiro.uitest.pagehelper.bean.PageDisappearReason
 
 interface IPageDisappearNotification {
 
-    fun notifyDisappearReason(pageDisappearReason: PageDisappearReason)
+    fun notifyDisappearReason(pageDisappearReason: PageDisappearReason, pageName: String)
 
 }
