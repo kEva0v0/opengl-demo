@@ -67,8 +67,12 @@ object PageTreeHelper: IPageTreeLifecycle {
 
     override fun onFragmentResume(fragment: Fragment) {
         appendFragmentNode(fragment)
-        // 这里会用第一个resume的fragment通知出去
-        notifyAndRemove(PageDisappearReason.JUMP_TO_FRAGMENT, fragment::class.java.simpleName)
+        if (viewTree.findNode { it.pageTreeItem == PageTreeItem.createFragment(fragment) && it.disappear } != null) {
+            notifyAndRemove(PageDisappearReason.CUR_FRAGMENT, fragment::class.java.simpleName)
+        } else {
+            // 这里会用第一个resume的fragment通知出去
+            notifyAndRemove(PageDisappearReason.JUMP_TO_FRAGMENT, fragment::class.java.simpleName)
+        }
     }
 
     override fun onActivityDestroy(activity: AppCompatActivity) {

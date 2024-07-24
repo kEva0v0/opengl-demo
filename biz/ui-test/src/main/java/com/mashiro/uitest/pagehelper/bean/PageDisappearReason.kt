@@ -8,5 +8,7 @@ enum class PageDisappearReason {
     // 去后台
     JUMP_TO_BACKGROUND,
     // 被退出
-    QUIT
+    QUIT,
+    // 被自己通知，比如通知弹窗
+    CUR_FRAGMENT
 }
