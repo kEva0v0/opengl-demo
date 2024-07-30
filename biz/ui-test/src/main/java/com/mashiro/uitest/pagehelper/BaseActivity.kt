@@ -13,7 +13,7 @@ abstract class BaseActivity: AppCompatActivity(), IPageDisappearNotification{
         notified = false
     }
 
-    override fun notifyDisappearReason(pageDisappearReason: PageDisappearReason) {
+    override fun notifyDisappearReason(pageDisappearReason: PageDisappearReason, pageName: String) {
         notified = true
     }
 }
