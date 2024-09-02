@@ -115,16 +115,16 @@ class SweepLightView: FrameLayout, SweepAnimateController {
 
     /**
      * 扫光动画原理如下：
-     *         startX                       endX
-     *           |                           |
+     *    startX                        endX
+     *      |                            |
      *  ----------------------------------------
-     *  |扫光区域| ->
+     *  |扫光区域| ->  |扫光区域|  ->   |扫光区域|
      *  ----------------------------------------
      *  控制扫光的translationX向前移动
      */
     private fun startAnimateInternal(sweepData: SweepData) {
-        val sweepStartX = sweepData.startX - width.toFloat()
-        val sweepEndX = sweepData.endX + width.toFloat()
+        val sweepStartX = sweepData.startX - width.toFloat() / 2
+        val sweepEndX = sweepData.endX + width.toFloat() / 2
         Log.d("zyc", "sweepStartX: $sweepStartX, sweepEndX: $sweepEndX")
         sweepLightAnimator = ValueAnimator.ofFloat(
             // 起点是：起点X - 扫光View的宽度
