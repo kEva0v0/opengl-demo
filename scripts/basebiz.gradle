@@ -31,6 +31,9 @@ android {
     aaptOptions {
         noCompress 'filamat', 'ktx'
     }
+    viewBinding{
+        enabled = true
+    }
 }
 
 dependencies {

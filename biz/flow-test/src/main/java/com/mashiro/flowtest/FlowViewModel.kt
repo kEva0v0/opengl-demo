@@ -6,9 +6,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ProducerScope
@@ -19,6 +21,7 @@ import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.internal.ChannelFlow
 import kotlinx.coroutines.flow.onEach
@@ -57,6 +60,28 @@ class FlowViewModel: ViewModel() {
                 }
         }
         job?.start()
+    }
+
+    fun testFlow(){
+        val flow = flowOf(1,2,3)
+        val flowInternal = flowOf(1,2,3)
+        val coroutineScope = CoroutineScope(
+            Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+        ).launch {
+            flow.collect{v1 ->
+                pending(v1)
+                flowInternal.collect{v2 ->
+                    Log.d("zyc", "pending $v1, $v2")
+                }
+            }
+        }
+    }
+
+    suspend fun pending(value: Int) {
+        delay(1000)
+        Log.d("zyc", "pending $value")
+        delay(1000)
+        Log.d("zyc", "pending end $value")
     }
 
     fun stopCollect() {

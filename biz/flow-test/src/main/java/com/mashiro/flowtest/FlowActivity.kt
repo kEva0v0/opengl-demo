@@ -31,6 +31,7 @@ class FlowActivity: AppCompatActivity() {
         }
         btn_shared_flow_start_collect.setOnClickListener {
             // flowViewModel.startCollect(this)
+            flowViewModel.testFlow()
         }
         btn_shared_flow_stop_collect.setOnClickListener {
             // flowViewModel.stopCollect()

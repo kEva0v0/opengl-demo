@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <TextView
+        android:id="@+id/tv_tips_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="14sp"
+        android:maxLines="4"
+        android:ellipsize="marquee"
+        android:textFontWeight="500"
+        android:textColor="@color/cardview_dark_background"/>
+    <com.mashiro.uitest.sweep.SweepLightView
+        android:id="@+id/sweep_light_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</merge>
