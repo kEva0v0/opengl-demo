@@ -3,13 +3,13 @@ package com.mashiro.opengl
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mashiro.chat.ui.ChatActivity
 import com.mashiro.filament.view.FilamentActivity
 import com.mashiro.filament.view.FilamentPointCloudActivity
 import com.mashiro.flowtest.ColorActivity
 import com.mashiro.flowtest.FlowActivity
 import com.mashiro.opengl.firstopengl.TriangleActivity
 import com.mashiro.uitest.UIActivity
-import com.mashiro.unity.UnityPlayerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FilamentPointCloudActivity::class.java)
             startActivity(intent)
         }
-        btn_test_unity.setOnClickListener {
-            val intent = Intent(this, UnityPlayerActivity::class.java)
+        btn_open_chat.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
     }

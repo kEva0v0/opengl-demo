@@ -50,10 +50,10 @@
         android:text="打开自己写的filament"
         android:gravity="center"/>
     <Button
-        android:id="@+id/btn_test_unity"
+        android:id="@+id/btn_open_chat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="打开自己写的unity"
+        android:text="打开聊天"
         android:gravity="center"/>
     <EditText
         android:layout_width="match_parent"
