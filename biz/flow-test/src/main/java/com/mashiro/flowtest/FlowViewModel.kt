@@ -91,4 +91,6 @@ class FlowViewModel: ViewModel() {
     fun stopEmit() {
         TestSharedFlowEmitter.stopEmit()
     }
+
+    // region测试单线程
 }

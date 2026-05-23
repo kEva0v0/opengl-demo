@@ -6,6 +6,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.mashiro.flowtest.coroutinue.SingleExecutorTest
 import com.mashiro.flowtest.willcollectwait.WillCollectWait
 import kotlinx.android.synthetic.main.layout_flow_test.btn_shared_flow_start_collect
 import kotlinx.android.synthetic.main.layout_flow_test.btn_shared_flow_stop_collect
@@ -27,11 +28,15 @@ class FlowActivity: AppCompatActivity() {
         btn_shared_flow_test.setOnClickListener {
             Log.d("zyc", "isFullScreen:${isFullScreen()}")
             // flowViewModel.startEmit()
-            willCollectWait.sender()
+//            willCollectWait.sender()
+//            SingleExecutorTest.testPriority()
+//            SingleExecutorTest.testPriority2()
+            SingleExecutorTest.testPriority()
         }
         btn_shared_flow_start_collect.setOnClickListener {
             // flowViewModel.startCollect(this)
-            flowViewModel.testFlow()
+//            flowViewModel.testFlow()
+            SingleExecutorTest.testBlocking()
         }
         btn_shared_flow_stop_collect.setOnClickListener {
             // flowViewModel.stopCollect()
